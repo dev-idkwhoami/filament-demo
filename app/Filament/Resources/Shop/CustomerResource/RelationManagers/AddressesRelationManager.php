@@ -7,6 +7,7 @@ use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Squire\Models\Continent;
 use Squire\Models\Country;
 
 class AddressesRelationManager extends RelationManager
@@ -19,6 +20,23 @@ class AddressesRelationManager extends RelationManager
     {
         return $form
             ->schema([
+                /* Creating a select field which the country select field is dependent on to be filled in order to have any results from its query */
+                Forms\Components\Select::make('continent')
+                    /* Making this select field live to re-evaluate the 'disabled' condition on the country field */
+                    ->live()
+                    /* If a default value would be given upon the first load the select field gets initialized correctly */
+                    // ->default('eu')
+                    ->searchable()
+                    ->getSearchResultsUsing(fn (string $query) => Continent::where('name', 'like', "%{$query}%")->pluck('name', 'id'))
+                    ->getOptionLabelUsing(fn ($value): ?string => Continent::firstWhere('id', $value)?->getAttribute('name')),
+
+                Forms\Components\Select::make('country')
+                    ->searchable()
+                    /* This is to prevent the user to attempt to select a country before a continent is selected. */
+                    ->disabled(fn (Forms\Get $get) => ! filled($get('continent')))
+                    ->getSearchResultsUsing(fn (Forms\Get $get, string $query) => Country::where('continent_id', $get('continent'))->where('name', 'like', "%{$query}%")->pluck('name', 'id'))
+                    ->getOptionLabelUsing(fn (Forms\Get $get, $value): ?string => Country::where('continent_id', $get('continent'))->firstWhere('id', $value)?->getAttribute('name')),
+
                 Forms\Components\TextInput::make('street'),
 
                 Forms\Components\TextInput::make('zip'),
@@ -27,10 +45,6 @@ class AddressesRelationManager extends RelationManager
 
                 Forms\Components\TextInput::make('state'),
 
-                Forms\Components\Select::make('country')
-                    ->searchable()
-                    ->getSearchResultsUsing(fn (string $query) => Country::where('name', 'like', "%{$query}%")->pluck('name', 'id'))
-                    ->getOptionLabelUsing(fn ($value): ?string => Country::firstWhere('id', $value)?->getAttribute('name')),
             ]);
     }
 

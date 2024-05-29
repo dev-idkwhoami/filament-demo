@@ -19,6 +19,7 @@
         "laravel/framework": "^11.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.8",
+        "squirephp/continents-en": "^3.5",
         "squirephp/countries-en": "^3.3",
         "squirephp/currencies-en": "^3.3"
     },

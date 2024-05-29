@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f9b22a77349bf39a6d50d60672efae7a",
+    "content-hash": "1e784f47de249b409f057f533db0f426",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -6289,6 +6289,114 @@
                 }
             ],
             "time": "2023-12-25T11:46:58+00:00"
+        },
+        {
+            "name": "squirephp/continents",
+            "version": "v3.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/squirephp/continents.git",
+                "reference": "33f730fab3b4be04efd02856776a14f4ab682f6f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/squirephp/continents/zipball/33f730fab3b4be04efd02856776a14f4ab682f6f",
+                "reference": "33f730fab3b4be04efd02856776a14f4ab682f6f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.0|^9.0|^10.0|^11.0",
+                "php": "^8.0",
+                "squirephp/model": "self.version",
+                "squirephp/rule": "self.version"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Squire\\ContinentsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Squire\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dan Harrin",
+                    "email": "dan@danharrin.com"
+                }
+            ],
+            "description": "A library containing Squire's Continent model.",
+            "homepage": "https://github.com/squirephp",
+            "keywords": [
+                "squire"
+            ],
+            "support": {
+                "issues": "https://github.com/squirephp/squire/issues",
+                "source": "https://github.com/squirephp/squire"
+            },
+            "time": "2024-03-11T11:05:54+00:00"
+        },
+        {
+            "name": "squirephp/continents-en",
+            "version": "v3.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/squirephp/continents-en.git",
+                "reference": "910c6d0d1668d340968f093c4b199b863083fc88"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/squirephp/continents-en/zipball/910c6d0d1668d340968f093c4b199b863083fc88",
+                "reference": "910c6d0d1668d340968f093c4b199b863083fc88",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.0|^9.0|^10.0|^11.0",
+                "php": "^8.0",
+                "squirephp/continents": "self.version",
+                "squirephp/repository": "self.version"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Squire\\ContinentsEnServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Squire\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dan Harrin",
+                    "email": "dan@danharrin.com"
+                }
+            ],
+            "description": "A library containing the English translation of Squire's Continent model.",
+            "homepage": "https://github.com/squirephp",
+            "keywords": [
+                "squire"
+            ],
+            "support": {
+                "issues": "https://github.com/squirephp/squire/issues",
+                "source": "https://github.com/squirephp/squire"
+            },
+            "time": "2024-03-11T11:06:01+00:00"
         },
         {
             "name": "squirephp/countries",
